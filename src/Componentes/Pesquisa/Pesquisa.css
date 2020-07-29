@@ -1,0 +1,13 @@
+.caixa{
+    background-color: #870100;
+    border: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+   color: white;
+   width:50%;
+   display: inline-block;
+  
+}
+.botao{
+    color: white;
+    display: inline-block;
+}
