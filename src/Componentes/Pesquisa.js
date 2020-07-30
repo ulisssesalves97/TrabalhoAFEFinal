@@ -1,6 +1,7 @@
 import React, { useState} from 'react';
 import './Pesquisa/Pesquisa.css';
-import $ from 'jquery'
+import $ from 'jquery';
+import ListaHerois from './ListaHerois/ListaHerois'
 
 
 const Pesquisa = (
@@ -11,11 +12,13 @@ const Pesquisa = (
   
 const chamaAPI =(pesquisaNome) => {
   console.log(pesquisaNome);
-  const string= 'https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e'
+  const string= 'https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=' + pesquisaNome
    $.ajax({
      url: string,
      success: (resultado) =>{
-       console.log(resultado)
+       resultado.map((heroi) => 
+        <ListaHerois nome={heroi.name} caminhoImagem={heroi.path} extension={heroi.extension}/>
+       );
      },
      error:(xhr, status, err) => {
                   
