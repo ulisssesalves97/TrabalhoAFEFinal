@@ -11,14 +11,12 @@ const Pesquisa = (
   const {termoPesquisa} = state;
   
 const chamaAPI =(pesquisaNome) => {
-  console.log(pesquisaNome);
   const string= 'https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=' + pesquisaNome
    $.ajax({
      url: string,
      success: (resultado) =>{
-       resultado.map((heroi) => 
-        <ListaHerois nome={heroi.name} caminhoImagem={heroi.path} extension={heroi.extension}/>
-       );
+       console.log(resultado.data.results);
+       <ListaHerois dados={resultado.data.results}/>
      },
      error:(xhr, status, err) => {
                   

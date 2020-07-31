@@ -1,17 +1,29 @@
 import React, { useState} from 'react';
+import PropTypes from 'prop-types';
 
 
 const ListaHerois =({
-    nome, caminhoImagem, extension
+   dados
   }) =>{
 
+    const tabelaHerois =() =>{dados.map((dados) =>
+        <div>
+        <div> 
+          <img alt='Personagem'src={`${dados.thumbnail.path}.${dados.thumbnail.extension}`}></img>
+        </div>
+         <div key={dados.id}>
+           {dados.name}
+         </div>  
+         </div>
+      );
+    };
 
-    return (
-        <tr>
-        <td> <img alt='Personagem'src={`${caminhoImagem}.${extension}`}></img></td>
-        <td>{nome}</td>
-      </tr>
+    return(
+      tabelaHerois()
     )
-
+  
+};
+ListaHerois.propTypes = {
+  dados: PropTypes.array.isRequired,
 };
 export default ListaHerois;
