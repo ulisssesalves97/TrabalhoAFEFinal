@@ -16,8 +16,10 @@ class Pesquisa extends React.Component {
  
   chamaAPI(pesquisaNome) {
     const string =
-      "https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=" +
-      pesquisaNome;
+      `https://gateway.marvel.com:443/v1/public/characters?` +
+      `apikey=3bb8bee4e8e7233fee2f0fd677aa636e` + 
+      (pesquisaNome && pesquisaNome.length > 0? `&nameStartsWith=${pesquisaNome}` : '');
+
  
     var contexto = this;
     $.ajax({
@@ -44,7 +46,7 @@ class Pesquisa extends React.Component {
       <div>
         <input
           onChange={this.changeHendler}
-          placeholder={"Digite o nome do Herรณi"}
+          placeholder={"Digite o nome do Her�i"}
           className="caixa"
         />
         <button
