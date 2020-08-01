@@ -16,8 +16,15 @@ class Pesquisa extends React.Component {
  
   chamaAPI(pesquisaNome) {
     const string =
+<<<<<<< HEAD
       "https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=" +
       pesquisaNome;
+=======
+      `https://gateway.marvel.com:443/v1/public/characters?` +
+      `apikey=3bb8bee4e8e7233fee2f0fd677aa636e` + 
+      (pesquisaNome && pesquisaNome.length > 0? `&nameStartsWith=${pesquisaNome}` : '');
+
+>>>>>>> 5cafc51b434cd5a9fa4401ba6556a1fdeb1f8680
  
     var contexto = this;
     $.ajax({
