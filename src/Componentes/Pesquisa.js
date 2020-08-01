@@ -1,7 +1,7 @@
 import React from "react";
 import "./Pesquisa/Pesquisa.css";
 import ListaHerois from "./ListaHerois/ListaHerois";
-import ApiMarvel from "../cross/api-marvel.js"
+import ApiMarvel from "../cross/api-marvel.js";
 
 class Pesquisa extends React.Component {
   constructor(props) {
@@ -12,30 +12,41 @@ class Pesquisa extends React.Component {
     this.state = {
       termoPesquisa: null,
       listaHerois: [],
+      paginacao: null,
     };
   }
 
-  ObterPersonagens(pesquisaNome) {
+  ObterPersonagens(paginaNumero = 0) {
     var onSuccess = (resultado) => {
-      console.log(resultado.data.results);
       var dados = resultado.data;
       var paginacao = {
         offset: dados.offset,
         limit: dados.limit,
         total: dados.total,
         count: dados.count,
+        Navegar: (paginaNumero) => {
+          this.ObterPersonagens(paginaNumero);
+        },
       };
       this.setState({
         ...this.state,
         listaHerois: (
-          <ListaHerois
-            herois={dados.results}
-            paginacao={paginacao}
-          />
+          <ListaHerois herois={dados.results} paginacao={paginacao} />
         ),
+        paginacao: paginacao,
       });
+    };
+    var offset = 0;
+    var paginacao = this.state.paginacao;
+    if (paginacao) {
+      offset = (paginaNumero - 1) * paginacao.limit;
     }
-    this.api.ObterPersonagens(onSuccess, null, pesquisaNome);
+    this.api.ObterPersonagens(
+      onSuccess,
+      null,
+      this.state.termoPesquisa,
+      offset
+    );
   }
 
   changeHendler(item) {
@@ -46,14 +57,14 @@ class Pesquisa extends React.Component {
   render() {
     return (
       <div>
-        <div className='pesquisa'>
+        <div className="pesquisa">
           <input
             onChange={this.changeHendler}
             placeholder={"Digite o nome do Herói"}
             className="pesquisa__caixa"
           />
           <button
-            onClick={() => this.ObterPersonagens(this.state.termoPesquisa)}
+            onClick={() => this.ObterPersonagens()}
             className="pesquisa__botao"
           >
             Buscar

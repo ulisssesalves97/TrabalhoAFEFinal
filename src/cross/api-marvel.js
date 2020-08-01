@@ -7,13 +7,15 @@ class ApiMarvel {
     this.apiKey = apiKey;
   }
 
-  ObterPersonagens(onSuccess, onError, pesquisaNome) {
-    var url =
-      `${this.baseUrl}/v1/public/characters?` +
-      `apikey=${this.apiKey}` +
-      (pesquisaNome && pesquisaNome.length > 0
-        ? `&nameStartsWith=${pesquisaNome}`
-        : "");  
+  ObterPersonagens(onSuccess, onError, pesquisaNome, offset) {
+    var urlParams = [`apikey=${this.apiKey}`];
+    if(pesquisaNome && pesquisaNome.length > 0){
+      urlParams.push(`nameStartsWith=${pesquisaNome}`);
+    }
+    if(offset && offset > 0){
+      urlParams.push(`offset=${offset}`);
+    }
+    var url = `${this.baseUrl}/v1/public/characters?${urlParams.join('&')}`;
     Get(url, onSuccess, onError);
   }
 }

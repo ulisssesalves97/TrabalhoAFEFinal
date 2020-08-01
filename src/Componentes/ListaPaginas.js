@@ -15,14 +15,23 @@ class NavegacaoPaginas extends React.Component {
         <ul className="grid">
           {props.paginaAtual > 1 && (
             <li className="grid__item">
-              <button onClick={() => props.Navegar && props.Navegar({ anterior: true })}>
+              <button
+                onClick={() =>
+                  props.Navegar && props.Navegar(props.paginaAtual - 1)
+                }
+              >
                 Anterior
               </button>
             </li>
           )}
+          <li className="grid__item">{props.paginaAtual}</li>
           {props.paginaAtual < props.quantidadePaginas && (
             <li className="grid__item">
-              <button onClick={() => props.Navegar && props.Navegar({ proximo: true })}>
+              <button
+                onClick={() =>
+                  props.Navegar && props.Navegar(props.paginaAtual + 1)
+                }
+              >
                 Próximo
               </button>
             </li>
@@ -39,7 +48,6 @@ class ListaPaginas extends React.Component {
   }
 
   render() {
-    console.log({...this.props});
     return (
       <div className="paginas">
         <NavegacaoPaginas {...this.props} />

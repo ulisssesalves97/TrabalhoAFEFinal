@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Heroi from "../ListaHerois/Herois.css" ;
+import Heroi from "../ListaHerois/Herois.css";
 import HeroiDetalhe from "../ListaHerois/HeroiDetalhe.js";
 import ListaPaginas from "../ListaPaginas.js";
 
@@ -12,7 +12,7 @@ class ListaHerois extends React.Component {
     }
     const tabelaHerois = herois.map((heroi) => (
       <div>
-        <table className='tabela'>
+        <table className="tabela">
           <tr>
             <td>
               <img
@@ -29,12 +29,12 @@ class ListaHerois extends React.Component {
     ));
     var paginacao = this.props.paginacao;
     var quantidadePaginas = Math.ceil(paginacao.total / paginacao.limit);
-    var paginaAtual = Math.floor(paginacao.offset + 1 / paginacao.limit) + 1;
+    var paginaAtual = Math.ceil(paginacao.offset / paginacao.limit) + 1;
     return (
       <ListaPaginas
         quantidadePaginas={quantidadePaginas}
         paginaAtual={paginaAtual}
-        Navegar={() => alert(`${paginacao.count} herois encontrados`)}
+        Navegar={paginacao.Navegar}
       >
         {tabelaHerois}
       </ListaPaginas>
