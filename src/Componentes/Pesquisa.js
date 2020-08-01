@@ -1,48 +1,41 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Pesquisa/Pesquisa.css";
-import $ from "jquery";
 import ListaHerois from "./ListaHerois/ListaHerois";
+import ApiMarvel from "../cross/api-marvel.js"
 
 class Pesquisa extends React.Component {
   constructor(props) {
     super(props);
-    this.chamaAPI = this.chamaAPI.bind(this);
+    this.ObterPersonagens = this.ObterPersonagens.bind(this);
     this.changeHendler = this.changeHendler.bind(this);
+    this.api = new ApiMarvel();
     this.state = {
       termoPesquisa: null,
       listaHerois: [],
     };
   }
 
-  chamaAPI(pesquisaNome) {
-    const string =
-      `https://gateway.marvel.com:443/v1/public/characters?` +
-      `apikey=3bb8bee4e8e7233fee2f0fd677aa636e` + 
-      (pesquisaNome && pesquisaNome.length > 0? `&nameStartsWith=${pesquisaNome}` : ''); 
-    var contexto = this;
-    $.ajax({
-      url: string,
-      success: (resultado) => {
-        console.log(resultado.data.results);
-        var dados = resultado.data;
-        var paginacao = {
-          offset: dados.offset,
-          limit: dados.limit,
-          total: dados.total,
-          count: dados.count,
-        };
-        this.setState({
-          ...this.state,
-          listaHerois: (
-            <ListaHerois
-              herois={dados.results}
-              paginacao={paginacao}
-            />
-          ),
-        });
-      },
-      error: (xhr, status, err) => {},
-    });
+  ObterPersonagens(pesquisaNome) {
+    var onSuccess = (resultado) => {
+      console.log(resultado.data.results);
+      var dados = resultado.data;
+      var paginacao = {
+        offset: dados.offset,
+        limit: dados.limit,
+        total: dados.total,
+        count: dados.count,
+      };
+      this.setState({
+        ...this.state,
+        listaHerois: (
+          <ListaHerois
+            herois={dados.results}
+            paginacao={paginacao}
+          />
+        ),
+      });
+    }
+    this.api.ObterPersonagens(onSuccess, null, pesquisaNome);
   }
 
   changeHendler(item) {
@@ -60,7 +53,7 @@ class Pesquisa extends React.Component {
             className="pesquisa__caixa"
           />
           <button
-            onClick={() => this.chamaAPI(this.state.termoPesquisa)}
+            onClick={() => this.ObterPersonagens(this.state.termoPesquisa)}
             className="pesquisa__botao"
           >
             Buscar
