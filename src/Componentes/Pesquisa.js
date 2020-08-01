@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Pesquisa/Pesquisa.css";
 import $ from "jquery";
 import ListaHerois from "./ListaHerois/ListaHerois";
-
+ 
 class Pesquisa extends React.Component {
   constructor(props) {
     super(props);
@@ -13,12 +13,12 @@ class Pesquisa extends React.Component {
       listaHerois: [],
     };
   }
-
+ 
   chamaAPI(pesquisaNome) {
     const string =
       "https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=" +
       pesquisaNome;
-
+ 
     var contexto = this;
     $.ajax({
       url: string,
@@ -26,21 +26,22 @@ class Pesquisa extends React.Component {
         console.log(resultado.data.results);
         this.setState({
           ...this.state,
-          listaHerois: <ListaHerois dados={resultado.data.results} />,
+          listaHerois: <ListaHerois dados={resultado.data.results} key="teste" />,
         });
       },
       error: (xhr, status, err) => {},
     });
   }
-
+ 
   changeHendler(item) {
     const busca = item.target.value;
     this.setState({ ...this.state, termoPesquisa: busca });
   }
-
+ 
   render() {
     return (
-      <div>
+    <div>
+      <div className='pesquisa'>
         <input
           onChange={this.changeHendler}
           placeholder={"Digite o nome do Herói"}
@@ -52,9 +53,12 @@ class Pesquisa extends React.Component {
         >
           Buscar
         </button>
-
+ 
+      </div>
+      <div>
         {this.state.listaHerois}
       </div>
+    </div>
     );
   }
 }

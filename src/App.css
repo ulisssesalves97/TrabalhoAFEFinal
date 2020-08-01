@@ -28,17 +28,12 @@
   color: #61dafb;
 }
 .altoPagina{
-  background-color: #ed1d24;
   border-width: medium;
   border:solid;
   border-color: #870100;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Cabecalho{
+  background-color: #ed1d24;
+  height: 85px;
 }
+

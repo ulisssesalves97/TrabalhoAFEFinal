@@ -1,0 +1,15 @@
+.image {
+    max-width:150px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+
+.tabela {
+    background-color: #ffffff;
+}
+.tabela td{
+    width:150px;
+    height:150px;
+    border-top-color: #870100;
+}
