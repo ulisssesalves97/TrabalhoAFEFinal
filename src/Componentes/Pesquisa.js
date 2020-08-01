@@ -46,7 +46,7 @@ class Pesquisa extends React.Component {
       <div>
         <input
           onChange={this.changeHendler}
-          placeholder={"Digite o nome do Herói"}
+          placeholder={"Digite o nome do HerÃ³i"}
           className="caixa"
         />
         <button
