@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-import Heroi from "../ListaHerois/Herois.css";
+import Heroi from "../ListaHerois/Herois.css" ;
 import HeroiDetalhe from "../ListaHerois/HeroiDetalhe.js";
 import ListaPaginas from "../ListaPaginas.js";
 
@@ -12,13 +12,13 @@ class ListaHerois extends React.Component {
     }
     const tabelaHerois = herois.map((heroi) => (
       <div>
-        <table>
+        <table className='tabela'>
           <tr>
             <td>
               <img
                 alt="Personagem"
                 src={`${heroi.thumbnail.path}.${heroi.thumbnail.extension}`}
-                className="image"
+                className="tabela__image"
               ></img>
             </td>
             <td key={heroi.id}>{heroi.name}</td>

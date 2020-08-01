@@ -17,11 +17,8 @@ class Pesquisa extends React.Component {
   chamaAPI(pesquisaNome) {
     const string =
       `https://gateway.marvel.com:443/v1/public/characters?` +
-      `apikey=3bb8bee4e8e7233fee2f0fd677aa636e` +
-      (pesquisaNome && pesquisaNome.length > 0
-        ? `&nameStartsWith=${pesquisaNome}`
-        : "");
-
+      `apikey=3bb8bee4e8e7233fee2f0fd677aa636e` + 
+      (pesquisaNome && pesquisaNome.length > 0? `&nameStartsWith=${pesquisaNome}` : ''); 
     var contexto = this;
     $.ajax({
       url: string,
@@ -56,15 +53,15 @@ class Pesquisa extends React.Component {
   render() {
     return (
       <div>
-        <div>
+        <div className='pesquisa'>
           <input
             onChange={this.changeHendler}
             placeholder={"Digite o nome do Herói"}
-            className="caixa"
+            className="pesquisa__caixa"
           />
           <button
             onClick={() => this.chamaAPI(this.state.termoPesquisa)}
-            className="botao"
+            className="pesquisa__botao"
           >
             Buscar
           </button>
