@@ -12,8 +12,7 @@ class ListaHerois extends React.Component {
       return <div>Nenhum resultado</div>;
     }
     console.log("gerando lista...", this.props.dados);
-    const tabelaHerois = () => {
-      this.props.dados.map((dados) => (
+    const tabelaHerois = this.props.dados.map((dados) => (
         <div>
           <div>
             <img
@@ -24,8 +23,7 @@ class ListaHerois extends React.Component {
           <div key={dados.id}>{dados.name}</div>
         </div>
       ));
-    };
-    return <div>{tabelaHerois()}</div>;
+    return <div>{tabelaHerois}</div>;
   }
 }
 
