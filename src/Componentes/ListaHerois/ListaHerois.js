@@ -1,12 +1,6 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
-<<<<<<< HEAD
 import Heroi from "../ListaHerois/Herois.css" ;
-
-class ListaHerois extends React.Component {
-
-
-import Heroi from "../ListaHerois/Herois.css";
 import HeroiDetalhe from "../ListaHerois/HeroiDetalhe.js";
 
 class ListaHerois extends React.Component {
