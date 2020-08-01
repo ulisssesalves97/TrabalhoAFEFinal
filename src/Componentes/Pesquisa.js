@@ -1,42 +1,61 @@
-import React, { useState} from 'react';
-import './Pesquisa/Pesquisa.css';
-import $ from 'jquery';
-import ListaHerois from './ListaHerois/ListaHerois'
+import React, { useState } from "react";
+import "./Pesquisa/Pesquisa.css";
+import $ from "jquery";
+import ListaHerois from "./ListaHerois/ListaHerois";
 
+class Pesquisa extends React.Component {
+  constructor(props) {
+    super(props);
+    this.chamaAPI = this.chamaAPI.bind(this);
+    this.changeHendler = this.changeHendler.bind(this);
+    this.state = {
+      termoPesquisa: null,
+      listaHerois: [],
+    };
+  }
 
-const Pesquisa = (
- ) => {
-    const [state, setState] = useState({  termoPesquisa:null
+  chamaAPI(pesquisaNome) {
+    const string =
+      "https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=" +
+      pesquisaNome;
+
+    var contexto = this;
+    $.ajax({
+      url: string,
+      success: (resultado) => {
+        console.log(resultado.data.results);
+        this.setState({
+          ...this.state,
+          listaHerois: <ListaHerois dados={resultado.data.results} />,
+        });
+      },
+      error: (xhr, status, err) => {},
     });
-  const {termoPesquisa} = state;
-  
-const chamaAPI =(pesquisaNome) => {
-  const string= 'https://gateway.marvel.com:443/v1/public/characters?apikey=3bb8bee4e8e7233fee2f0fd677aa636e&nameStartsWith=' + pesquisaNome
-   $.ajax({
-     url: string,
-     success: (resultado) =>{
-       console.log(resultado.data.results);
-       <ListaHerois dados={resultado.data.results}/>
-     },
-     error:(xhr, status, err) => {
-                  
-     }
-   })
-};
-const changeHendler=(item) => {
+  }
 
-  const busca = item.target.value
-  setState({ ...state, termoPesquisa: busca})
+  changeHendler(item) {
+    const busca = item.target.value;
+    this.setState({ ...this.state, termoPesquisa: busca });
+  }
 
-};
-
+  render() {
     return (
       <div>
-          <input  onChange={changeHendler} placeholder = {"Digite o nome do Herói"} className='caixa'/>
-          <button onClick={()=> chamaAPI(termoPesquisa)}className='botao'>Buscar</button>
+        <input
+          onChange={this.changeHendler}
+          placeholder={"Digite o nome do Herói"}
+          className="caixa"
+        />
+        <button
+          onClick={() => this.chamaAPI(this.state.termoPesquisa)}
+          className="botao"
+        >
+          Buscar
+        </button>
+
+        {this.state.listaHerois}
       </div>
     );
-  };
-
-
-  export default Pesquisa;
+  }
+}
+export default Pesquisa;
