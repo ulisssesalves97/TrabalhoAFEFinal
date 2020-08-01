@@ -15,7 +15,7 @@ class ListaHerois extends React.Component {
             <td><img
               alt="Personagem"
               src={`${dados.thumbnail.path}.${dados.thumbnail.extension}`}
-            className='image'></img></td>
+            className='tabela__image'></img></td>
           <td key={dados.id}>{dados.name}</td>
           </tr>
           </table>

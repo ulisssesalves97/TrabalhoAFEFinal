@@ -6,9 +6,9 @@ import Pesquisa from './Componentes/Pesquisa'
 
 function App() {
   return (
-    <div className="altoPagina">
+    <div className="Pagina">
     <div className="Cabecalho">
-     <img alt='LogoMarvel'src={marvelLogo} className='logo'></img>
+     <img alt='LogoMarvel'src={marvelLogo}></img>
      </div>
       <Pesquisa/>
       </div>

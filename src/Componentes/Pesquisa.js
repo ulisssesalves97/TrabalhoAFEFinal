@@ -45,11 +45,11 @@ class Pesquisa extends React.Component {
         <input
           onChange={this.changeHendler}
           placeholder={"Digite o nome do Herói"}
-          className="caixa"
+          className="pesquisa__caixa"
         />
         <button
           onClick={() => this.chamaAPI(this.state.termoPesquisa)}
-          className="botao"
+          className="pesquisa__botao"
         >
           Buscar
         </button>

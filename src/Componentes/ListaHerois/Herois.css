@@ -1,12 +1,11 @@
-.image {
+.tabela {
+    background-color: #ffffff;
+}
+.tabela__image {
     max-width:150px;
     max-height:150px;
     width: auto;
     height: auto;
-}
-
-.tabela {
-    background-color: #ffffff;
 }
 .tabela td{
     width:150px;
