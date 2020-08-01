@@ -17,22 +17,44 @@ class NavegacaoPaginas extends React.Component {
             <li className="grid__item">
               <button
                 onClick={() =>
+                  props.Navegar && props.Navegar(1)
+                }
+              >
+                Primeira
+              </button>
+            </li>
+          )}
+          {props.paginaAtual > 2 && (
+            <li className="grid__item">
+              <button
+                onClick={() =>
                   props.Navegar && props.Navegar(props.paginaAtual - 1)
                 }
               >
-                Anterior
+                {props.paginaAtual - 1}
               </button>
             </li>
           )}
           <li className="grid__item">{props.paginaAtual}</li>
-          {props.paginaAtual < props.quantidadePaginas && (
+          {props.paginaAtual + 1 < props.quantidadePaginas && (
             <li className="grid__item">
               <button
                 onClick={() =>
                   props.Navegar && props.Navegar(props.paginaAtual + 1)
                 }
               >
-                Próximo
+                {props.paginaAtual + 1}
+              </button>
+            </li>
+          )}
+          {props.paginaAtual < props.quantidadePaginas && (
+            <li className="grid__item">
+              <button
+                onClick={() =>
+                  props.Navegar && props.Navegar(props.quantidadePaginas)
+                }
+              >
+                Ultimo
               </button>
             </li>
           )}
