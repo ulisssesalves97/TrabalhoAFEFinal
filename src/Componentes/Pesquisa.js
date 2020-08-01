@@ -8,12 +8,19 @@ class Pesquisa extends React.Component {
     super(props);
     this.ObterPersonagens = this.ObterPersonagens.bind(this);
     this.changeHendler = this.changeHendler.bind(this);
+    this.pesquisaKeyPress = this.pesquisaKeyPress.bind(this);
     this.api = new ApiMarvel();
     this.state = {
       termoPesquisa: null,
       listaHerois: [],
       paginacao: null,
     };
+  }
+
+  pesquisaKeyPress(evento) {
+    if (evento.keyCode == 13) {
+      this.ObterPersonagens();
+    }
   }
 
   ObterPersonagens(paginaNumero = 0) {
@@ -60,13 +67,11 @@ class Pesquisa extends React.Component {
         <div className="pesquisa">
           <input
             onChange={this.changeHendler}
+            onKeyDown={this.pesquisaKeyPress}
             placeholder={"Digite o nome do Herói"}
             className="pesquisa__caixa"
           />
-          <button
-            onClick={() => this.ObterPersonagens()}
-            className="pesquisa__botao"
-          >
+          <button onClick={this.ObterPersonagens} className="pesquisa__botao">
             Buscar
           </button>
         </div>

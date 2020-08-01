@@ -2,9 +2,28 @@
   border-width: medium;
   border:solid;
   border-color: #870100;
+  background-color: #aaaaaa;
 }
 .Cabecalho{
   background-color: #ed1d24;
   height: 85px;
 }
 
+.grid {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+
+.grid__item {
+  display: inline-block;
+}
+
+.nav-pages{
+  background-color: #333333;
+  padding: 0.5em 0;
+  float: center;
+}
