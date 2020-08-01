@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
+import Heroi from "../ListaHerois/Herois.css" ;
 
 class ListaHerois extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {dados: []};
-  // }
 
   render() {
     if (!this.props.dados || this.props.dados.length == 0) {
@@ -13,15 +10,15 @@ class ListaHerois extends React.Component {
     }
     console.log("gerando lista...", this.props.dados);
     const tabelaHerois = this.props.dados.map((dados) => (
-        <div>
-          <div>
-            <img
+        <table>
+          <tr>
+            <td><img
               alt="Personagem"
               src={`${dados.thumbnail.path}.${dados.thumbnail.extension}`}
-            ></img>
-          </div>
-          <div key={dados.id}>{dados.name}</div>
-        </div>
+            className='image'></img></td>
+          <td key={dados.id}>{dados.name}</td>
+          </tr>
+          </table>
       ));
     return <div>{tabelaHerois}</div>;
   }
