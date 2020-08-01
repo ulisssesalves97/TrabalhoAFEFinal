@@ -2,31 +2,43 @@ import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Heroi from "../ListaHerois/Herois.css";
 import HeroiDetalhe from "../ListaHerois/HeroiDetalhe.js";
+import ListaPaginas from "../ListaPaginas.js";
 
 class ListaHerois extends React.Component {
   render() {
-    if (!this.props.dados || this.props.dados.length == 0) {
+    var herois = this.props.herois;
+    if (!herois || herois.length == 0) {
       return <div>Nenhum resultado</div>;
     }
-    console.log("gerando lista...", this.props.dados);
-    const tabelaHerois = this.props.dados.map((dados) => (
+    const tabelaHerois = herois.map((heroi) => (
       <div>
         <table>
           <tr>
             <td>
               <img
                 alt="Personagem"
-                src={`${dados.thumbnail.path}.${dados.thumbnail.extension}`}
+                src={`${heroi.thumbnail.path}.${heroi.thumbnail.extension}`}
                 className="image"
               ></img>
             </td>
-            <td key={dados.id}>{dados.name}</td>
+            <td key={heroi.id}>{heroi.name}</td>
           </tr>
         </table>
-        <HeroiDetalhe heroi={dados} />
+        <HeroiDetalhe heroi={heroi} />
       </div>
     ));
-    return <div>{tabelaHerois}</div>;
+    var paginacao = this.props.paginacao;
+    var quantidadePaginas = Math.ceil(paginacao.total / paginacao.limit);
+    var paginaAtual = Math.floor(paginacao.offset + 1 / paginacao.limit) + 1;
+    return (
+      <ListaPaginas
+        quantidadePaginas={quantidadePaginas}
+        paginaAtual={paginaAtual}
+        Navegar={() => alert(`${paginacao.count} herois encontrados`)}
+      >
+        {tabelaHerois}
+      </ListaPaginas>
+    );
   }
 }
 
