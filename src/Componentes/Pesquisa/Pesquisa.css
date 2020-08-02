@@ -1,22 +1,28 @@
-
-.pesquisa{
-    background-color: #870100;
+.pesquisa-container {
+  background-color: #870100;
 }
-.pesquisa__caixa{
-    background-color: #870100;
-    border: 0px;
-    color: white;
-    height: 20px;
-    font-family: Arial, Helvetica, sans-serif;
-   width:95%;
-   display: inline-block;
-  
-}
-.pesquisa__botao{
-    background-color: #870100;
-    color: white;
-    display: inline-block;
-    height: 22px;
-     border: 0px;
 
+.pesquisa {
+  display: inline-block;
+  vertical-align: middle;
+}
+.pesquisa__caixa {
+  background-color: #870100;
+  border: 0px;
+  color: white;
+  height: 20px;
+  font-family: Arial, Helvet\ica, sans-serif;
+  width: 70vw;
+}
+.pesquisa__botao {
+  background-color: #ed1d24;
+  color: white;
+  font-weight: 500;
+  font-size: medium;
+  height: 2em;
+  min-width: 5em;
+  text-align: center;
+  border: 0px;
+  border-radius: 0.5em;
+  margin: 0.25em;
 }

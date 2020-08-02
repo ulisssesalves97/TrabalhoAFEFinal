@@ -65,16 +65,18 @@ class Pesquisa extends React.Component {
   render() {
     return (
       <div>
-        <div className="pesquisa">
-          <input
-            onChange={this.changeHendler}
-            onKeyDown={this.pesquisaKeyPress}
-            placeholder={"Digite o nome do Herói"}
-            className="pesquisa__caixa"
-          />
-          <button onClick={this.ObterPersonagens} className="pesquisa__botao">
-            Buscar
-          </button>
+        <div className="pesquisa-container">
+          <div className="pesquisa">
+            <button onClick={this.ObterPersonagens} className="pesquisa__botao">
+              Buscar
+            </button>
+            <input
+              onChange={this.changeHendler}
+              onKeyDown={this.pesquisaKeyPress}
+              placeholder={"Digite o nome do Herói"}
+              className="pesquisa__caixa"
+            />
+          </div>
         </div>
         <div>{this.state.listaHerois}</div>
       </div>
