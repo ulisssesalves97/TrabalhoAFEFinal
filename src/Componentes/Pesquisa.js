@@ -15,6 +15,7 @@ class Pesquisa extends React.Component {
       listaHerois: [],
       paginacao: null,
     };
+    this.ObterPersonagens();
   }
 
   pesquisaKeyPress(evento) {

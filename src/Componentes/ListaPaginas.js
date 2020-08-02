@@ -16,40 +16,60 @@ class NavegacaoPaginas extends React.Component {
           {props.paginaAtual > 1 && (
             <li className="grid__item">
               <button
-                onClick={() =>
-                  props.Navegar && props.Navegar(1)
-                }
+                className="grid__button"
+                onClick={() => props.Navegar && props.Navegar(1)}
               >
                 Primeira
+              </button>
+            </li>
+          )}
+          {props.paginaAtual > 3 && (
+            <li className="grid__item">
+              <button disabled className="grid__button nav-pages__button--disabled">
+                ...
               </button>
             </li>
           )}
           {props.paginaAtual > 2 && (
             <li className="grid__item">
               <button
+                className="grid__button"
                 onClick={() =>
                   props.Navegar && props.Navegar(props.paginaAtual - 1)
                 }
               >
-                {props.paginaAtual - 1}
+                Anterior
               </button>
             </li>
           )}
-          <li className="grid__item">{props.paginaAtual}</li>
+          <li className="grid__item">
+            <button className="grid__button nav-pages__button--disabled" disabled>
+              {props.paginaAtual}
+            </button>
+          </li>
           {props.paginaAtual + 1 < props.quantidadePaginas && (
             <li className="grid__item">
               <button
+                className="grid__button"
                 onClick={() =>
                   props.Navegar && props.Navegar(props.paginaAtual + 1)
                 }
               >
-                {props.paginaAtual + 1}
+                Próxima
+              </button>
+            </li>
+          )}
+          {props.paginaAtual + 2 < props.quantidadePaginas && (
+            <li className="grid__item">
+              <button disabled className="grid__button nav-pages__button--disabled">
+                ...
               </button>
             </li>
           )}
           {props.paginaAtual < props.quantidadePaginas && (
             <li className="grid__item">
               <button
+                className="grid__button"
                 onClick={() =>
                   props.Navegar && props.Navegar(props.quantidadePaginas)
                 }
