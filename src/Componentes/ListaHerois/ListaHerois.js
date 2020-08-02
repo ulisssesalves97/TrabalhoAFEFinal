@@ -11,33 +11,31 @@ class ListaHerois extends React.Component {
       return <div>Nenhum resultado</div>;
     }
     const tabelaHerois = herois.map((heroi) => (
-      <div>
-        <table className="tabela">
-          <tr>
-            <td>
-              <img
-                alt="Personagem"
-                src={`${heroi.thumbnail.path}.${heroi.thumbnail.extension}`}
-                className="tabela__image"
-              ></img>
-            </td>
-            <td key={heroi.id}>{heroi.name}</td>
-          </tr>
-        </table>
-        <HeroiDetalhe heroi={heroi} />
-      </div>
+        <div className="heroi">
+          <h1 className="heroi__titulo">{heroi.name}</h1>
+          <img
+            alt="Personagem"
+            src={`${heroi.thumbnail.path}.${heroi.thumbnail.extension}`}
+            className="heroi__image"
+          ></img>
+          <HeroiDetalhe heroi={heroi} />
+        </div>
     ));
     var paginacao = this.props.paginacao;
     var quantidadePaginas = Math.ceil(paginacao.total / paginacao.limit);
     var paginaAtual = Math.ceil(paginacao.offset / paginacao.limit) + 1;
     return (
-      <ListaPaginas
-        quantidadePaginas={quantidadePaginas}
-        paginaAtual={paginaAtual}
-        Navegar={paginacao.Navegar}
-      >
-        {tabelaHerois}
-      </ListaPaginas>
+      <div>
+        <ListaPaginas
+          quantidadePaginas={quantidadePaginas}
+          paginaAtual={paginaAtual}
+          Navegar={paginacao.Navegar}
+        >
+          <div className="heroi__container">
+            {tabelaHerois}
+          </div>
+        </ListaPaginas>
+      </div>
     );
   }
 }

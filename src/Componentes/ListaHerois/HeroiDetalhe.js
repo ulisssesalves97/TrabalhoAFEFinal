@@ -1,5 +1,6 @@
 import React from "react";
 import ListaPaginas from "../ListaPaginas.js";
+import "../ListaHerois/HeroiDetalhe.css";
 
 class HeroiDetalhe extends React.Component {
   constructor(props) {
@@ -19,7 +20,9 @@ class HeroiDetalhe extends React.Component {
   render() {
     if (!this.state.mostrarDetalhes) {
       return (
-        <button onClick={this.mostrarDetalhesToggleClick}>Ver detalhes</button>
+        <div className="detalhe">
+          <button className="detalhe__button" onClick={this.mostrarDetalhesToggleClick}>Ver detalhes</button>
+        </div>
       );
     }
     var heroi = this.props.heroi;
@@ -56,7 +59,7 @@ class HeroiDetalhe extends React.Component {
         </div>
         <div className="detalhe-footer">
           <button
-            className="detalhe-footer__botao"
+            className="detalhe__button"
             onClick={this.mostrarDetalhesToggleClick}
           >
             Esconder detalhes

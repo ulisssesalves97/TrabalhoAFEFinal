@@ -1,0 +1,16 @@
+.detalhe{
+  
+}
+
+.detalhe__button {
+  background-color: #333333;
+  color: #cccccc;
+  font-weight: 500;
+  font-size: medium;
+  height: 2em;
+  min-width: 5em;
+  text-align: center;
+  border: 0px;
+  border-radius: 0.5em;
+  margin: 0.25em;
+}

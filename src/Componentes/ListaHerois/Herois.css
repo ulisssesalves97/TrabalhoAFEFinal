@@ -1,14 +1,39 @@
-.tabela {
-    background-color: #aaaaaa;
+.heroi__container{
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  /* vertical-align: middle;
+  display: inline-block; */
+
+  display: flex;
+  flex-direction: row; /* | column; default is row*/
+  justify-content: center; /* Centers children in flex-direction.*/
+  align-items:center; /* Centers children in the direction orthogonal to the flex-direction */
+  flex-wrap: wrap;
 }
-.tabela__image {
-    max-width:150px;
-    max-height:150px;
-    width: auto;
-    height: auto;
+
+
+.heroi {
+  background-color: #aaaaaa;
+  padding: 0.25em;
+  margin: 1em;
+  border-radius: 1em;
+  display: inline-block;
+  text-align: center;
 }
-.tabela td{
-    width:150px;
-    height:150px;
-    border-top-color: #870100;
+
+.heroi__image {
+  height: 10em;
+  max-width: 10em;
+  border-radius: 1.5em;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.heroi__titulo {
+  border-top-color: #870100;
+  margin: 0;
+  font-size: large;
+  text-align: center;
 }
