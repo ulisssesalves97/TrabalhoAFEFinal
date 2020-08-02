@@ -2,6 +2,10 @@
   
 }
 
+.detalhe--esconder{
+  display: none;
+}
+
 .detalhe__button {
   background-color: #333333;
   color: #cccccc;
@@ -13,4 +17,30 @@
   border: 0px;
   border-radius: 0.5em;
   margin: 0.25em;
+}
+
+.heroi-detalhe{
+  display: flex;
+  flex-direction: column; /* | column; default is row*/
+  justify-content: center; /* Centers children in flex-direction.*/
+  align-items:center; /* Centers children in the direction orthogonal to the flex-direction */
+  max-width: 40vw;
+  background-color: #cccccc;
+  border-radius: 1em;;
+}
+
+.heroi-detalhe__texto {
+  text-align: justify;
+  text-overflow: ellipsis;
+}
+
+.heroi-grid {
+  margin-top: 0.4em;
+  margin-bottom: 0.4em;
+}
+
+.heroi-detalhe__sublistagem{
+  background-color: #333333;
+  border-radius: 1em;
+  padding: 0.2em;
 }

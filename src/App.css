@@ -64,7 +64,8 @@ body{
 }
 
 .nav-pages{
-  background-color: #333333;
-  padding: 0.5em 0;
   float: center;
+  border-radius: 0.5em;
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
 }

@@ -25,7 +25,7 @@ class ListaHerois extends React.Component {
     var quantidadePaginas = Math.ceil(paginacao.total / paginacao.limit);
     var paginaAtual = Math.ceil(paginacao.offset / paginacao.limit) + 1;
     return (
-      <div>
+      <div className="heroi-listagem__wrapper">
         <ListaPaginas
           quantidadePaginas={quantidadePaginas}
           paginaAtual={paginaAtual}

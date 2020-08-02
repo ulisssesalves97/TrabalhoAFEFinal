@@ -18,52 +18,59 @@ class HeroiDetalhe extends React.Component {
   }
 
   render() {
-    if (!this.state.mostrarDetalhes) {
-      return (
-        <div className="detalhe">
-          <button className="detalhe__button" onClick={this.mostrarDetalhesToggleClick}>Ver detalhes</button>
-        </div>
-      );
-    }
     var heroi = this.props.heroi;
     if (!heroi) {
       return <div> Houve um erro ao exibir os detalhes do heroi. </div>;
     }
     return (
       <div className="detalhe">
-        <div className="detalhe-body">
-          <div className="heroi-detalhe">
-            <h3 className="heroi-detalhe__titulo">{heroi.name}</h3>
-            <p className="heroi-detalhe__texto">{heroi.description}</p>
-            <ul className="grid">
-              {heroi.urls.map((item) => (
-                <li className="grid__item">
-                  <a className="link" href={item.url}>
-                    {item.type}
-                  </a>
-                </li>
-              ))}
-            </ul>
-            <div>
-              <ListaPaginas
-                quantidadePaginas={
-                  heroi.stories.available / heroi.stories.returned
-                }
-                paginaAtual={1}
-                Navegar={() => alert(heroi.name)}
-              >
-                <p>{heroi.stories.collectionURI}</p>
-              </ListaPaginas>
-            </div>
-          </div>
-        </div>
-        <div className="detalhe-footer">
+        <div className={this.state.mostrarDetalhes && "detalhe--esconder"}>
           <button
             className="detalhe__button"
             onClick={this.mostrarDetalhesToggleClick}
           >
-            Esconder detalhes
+            Ver detalhes
           </button>
+        </div>
+        <div className={!this.state.mostrarDetalhes && "detalhe--esconder"}>
+          <div className="detalhe-body">
+            <div className="heroi-detalhe">
+              <p className="heroi-detalhe__texto">{heroi.description}</p>
+              <div className="heroi-detalhe__sublistagem">
+                <ListaPaginas
+                  quantidadePaginas={
+                    heroi.stories.available / heroi.stories.returned
+                  }
+                  paginaAtual={1}
+                  Navegar={() => alert(heroi.name)}
+                >
+                  <div className="heroi-detalhe">
+                    <p className="heroi-detalhe__texto">
+                      
+                      {("teste") /* {heroi.stories.collectionURI} */}
+                    </p>
+                  </div>
+                </ListaPaginas>
+              </div>
+              <ul className="grid heroi-grid">
+                {heroi.urls.map((item) => (
+                  <li className="grid__item">
+                    <a className="grid__button" href={item.url}>
+                      {item.type}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="detalhe-footer">
+            <button
+              className="detalhe__button"
+              onClick={this.mostrarDetalhesToggleClick}
+            >
+              Esconder detalhes
+            </button>
+          </div>
         </div>
       </div>
     );
