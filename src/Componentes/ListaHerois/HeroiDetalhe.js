@@ -36,22 +36,24 @@ class HeroiDetalhe extends React.Component {
           <div className="detalhe-body">
             <div className="heroi-detalhe">
               <p className="heroi-detalhe__texto">{heroi.description}</p>
-              <div className="heroi-detalhe__sublistagem">
-                <ListaPaginas
-                  quantidadePaginas={
-                    heroi.stories.available / heroi.stories.returned
-                  }
-                  paginaAtual={1}
-                  Navegar={() => alert(heroi.name)}
-                >
-                  <div className="heroi-detalhe">
-                    <p className="heroi-detalhe__texto">
-                      
-                      {("teste") /* {heroi.stories.collectionURI} */}
-                    </p>
-                  </div>
-                </ListaPaginas>
+              <div>
+              <h4>Quadrinhos</h4>
+              <ul className="grid heroi-grid">
+                {heroi.stories.items.map((item) => (
+                  <li className="grid__item">
+                    <button
+                      className="grid__button"
+                      onClick={() =>
+                        alert(`Em consttução, navegar para ${item.resourceURI}`)
+                      }
+                    >
+                      {item.name}
+                    </button>
+                  </li>
+                ))}
+              </ul>
               </div>
+
               <ul className="grid heroi-grid">
                 {heroi.urls.map((item) => (
                   <li className="grid__item">

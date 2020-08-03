@@ -12,10 +12,16 @@ class ApiMarvel {
     if(pesquisaNome && pesquisaNome.length > 0){
       urlParams.push(`nameStartsWith=${pesquisaNome}`);
     }
+    var url = `${this.baseUrl}/v1/public/characters`;
+    this.ObterAlgo(onSuccess, onError, url, urlParams, offset);
+  }
+
+  
+  ObterAlgo(onSuccess, onError, url, urlParams = [], offset) {
     if(offset && offset > 0){
       urlParams.push(`offset=${offset}`);
     }
-    var url = `${this.baseUrl}/v1/public/characters?${urlParams.join('&')}`;
+    var url = `${url}?${urlParams.join('&')}`;
     Get(url, onSuccess, onError);
   }
 }
