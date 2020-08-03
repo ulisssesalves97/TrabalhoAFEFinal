@@ -1,6 +1,7 @@
 import React from "react";
 import ListaPaginas from "../ListaPaginas.js";
 import "../ListaHerois/HeroiDetalhe.css";
+import HeroiDetalheLista from "../ListaHerois/HeroiDetalheLista.js";
 
 class HeroiDetalhe extends React.Component {
   constructor(props) {
@@ -36,33 +37,36 @@ class HeroiDetalhe extends React.Component {
           <div className="detalhe-body">
             <div className="heroi-detalhe">
               <p className="heroi-detalhe__texto">{heroi.description}</p>
-              <div>
-              <h4>Quadrinhos</h4>
-              <ul className="grid heroi-grid">
-                {heroi.stories.items.map((item) => (
-                  <li className="grid__item">
-                    <button
-                      className="grid__button"
-                      onClick={() =>
-                        alert(`Em consttução, navegar para ${item.resourceURI}`)
-                      }
-                    >
-                      {item.name}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-              </div>
-
-              <ul className="grid heroi-grid">
-                {heroi.urls.map((item) => (
-                  <li className="grid__item">
-                    <a className="grid__button" href={item.url}>
-                      {item.type}
-                    </a>
-                  </li>
-                ))}
-              </ul>
+              <HeroiDetalheLista
+                titulo="Quadrinhos"
+                lista={heroi.comics.items}
+                descricaoKey="name"
+                urlKey="resourceURI"
+              />
+              <HeroiDetalheLista
+                titulo="Séries"
+                lista={heroi.series.items}
+                descricaoKey="name"
+                urlKey="resourceURI"
+              />{" "}
+              <HeroiDetalheLista
+                titulo="Histórias"
+                lista={heroi.stories.items}
+                descricaoKey="name"
+                urlKey="resourceURI"
+              />{" "}
+              <HeroiDetalheLista
+                titulo="Eventos"
+                lista={heroi.events.items}
+                descricaoKey="name"
+                urlKey="resourceURI"
+              />
+              <HeroiDetalheLista
+                titulo="Confira mais informações"
+                lista={heroi.urls}
+                descricaoKey="type"
+                urlKey="url"
+              />
             </div>
           </div>
           <div className="detalhe-footer">

@@ -24,7 +24,7 @@
   flex-direction: column; /* | column; default is row*/
   justify-content: center; /* Centers children in flex-direction.*/
   align-items:center; /* Centers children in the direction orthogonal to the flex-direction */
-  max-width: 40vw;
+  max-width: 95vw;
   background-color: #cccccc;
   border-radius: 1em;;
 }
